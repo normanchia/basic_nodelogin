@@ -1,17 +1,18 @@
 pipeline {
     agent any
     tools {
-            nodejs 'NodeJS_20'
-        }
+        nodejs 'NodeJS_20'
+    }
 
     stages {
-         stage('Build and Deploy') {
-            steps{
+        stage('Build and Deploy') {
+            steps {
                 script {
                     // Building the Docker image
                     sh 'docker build -t simple-node-login .'
+                    
                     // Checking if the container is already running
-                    def isRunning = sh(script: "docker ps -q -f name=\\^app\ \\$", returnStdout: true). trim()
+                    def isRunning = sh(script: "docker ps -q -f name=\\^app\\ \$", returnStdout: true).trim()
                     if (isRunning) {
                         // Stop the existing container
                         sh 'docker stop app'
@@ -31,8 +32,8 @@ pipeline {
         stage('Integration Tests') {
             steps {
                 script {
-                        sh 'npm install'
-                        sh 'npm run test:integration'
+                    sh 'npm install'
+                    sh 'npm run test:integration'
                 }
             }
         }
@@ -40,8 +41,8 @@ pipeline {
         stage('UI Tests') {
             steps {
                 script {
-                        sh 'npm install'
-                        sh 'npm run test:ui'
+                    sh 'npm install'
+                    sh 'npm run test:ui'
                 }
             }
         }
@@ -60,7 +61,7 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
-        }
+    }
 
     post {
         always {
