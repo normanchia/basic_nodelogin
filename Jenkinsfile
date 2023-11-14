@@ -1,27 +1,10 @@
 pipeline {
     agent any
-
-    environment {
-        // Define environment variables if needed
-        NODE_ENV = 'test'
+    tools {
+        nodejs 'NodeJS_20'
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Get the latest code from your source control
-                checkout scm
-            }
-        }
-        
-        // stage('Build') {
-        //     steps {
-        //         // Build your Docker image
-        //         script {
-        //             dockerImage = docker.build('my-nodejs-app:${env.BUILD_ID}')
-        //         }
-        //     }
-        // }
 
         stage('Integration Tests') {
             steps {
