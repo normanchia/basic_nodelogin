@@ -12,7 +12,7 @@ pipeline {
                     sh 'docker build -t simple-node-login -f node.Dockerfile .'
                     
                     // Checking if the container is already running
-                    def isRunning = sh(script: "docker ps -q -f name=\\^app\\ \$", returnStdout: true).trim()
+                    def isRunning = sh(script: "docker ps -q -f name=\\^app\\\$", returnStdout: true).trim()
                     if (isRunning) {
                         // Stop the existing container
                         sh 'docker stop app'
