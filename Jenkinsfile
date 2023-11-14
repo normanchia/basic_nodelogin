@@ -11,6 +11,8 @@ pipeline {
                     // Building the Docker image
                     sh 'docker build -t simple-node-login -f node.Dockerfile .'
                     
+                    // Remove the existing container
+                    sh 'docker rm app'
                     // Checking if the container is already running
                     def isRunning = sh(script: "docker ps -q -f name=\\^app\\ \$", returnStdout: true).trim()
                     if (isRunning) {
