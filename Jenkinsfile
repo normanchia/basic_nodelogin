@@ -1,10 +1,19 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS_20'
-    }
+            nodejs 'NodeJS_20'
+        }
 
     stages {
+        
+        stage('Build') {
+            steps {
+                // Build your Docker image
+                script {
+                    dockerImage = docker.build('my-nodejs-app:${env.BUILD_ID}')
+                }
+            }
+        }
 
         stage('Integration Tests') {
             steps {
