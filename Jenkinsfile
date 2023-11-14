@@ -5,24 +5,12 @@ pipeline {
         }
 
     stages {
-        
-        stage('Build') {
-            steps {
-                // Build your Docker image
-                script {
-                    dockerImage = docker.build('my-nodejs-app:${env.BUILD_ID}')
-                }
-            }
-        }
 
         stage('Integration Tests') {
             steps {
                 script {
-                    // Run your integration tests inside the Docker container
-                    dockerImage.inside {
                         sh 'npm install'
                         sh 'npm run test:integration'
-                    }
                 }
             }
         }
@@ -30,12 +18,8 @@ pipeline {
         stage('UI Tests') {
             steps {
                 script {
-                    // Run your UI tests inside the Docker container
-                    // Note that for UI tests, you might need a headless browser setup
-                    dockerImage.inside {
                         sh 'npm install'
                         sh 'npm run test:ui'
-                    }
                 }
             }
         }
