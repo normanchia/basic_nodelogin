@@ -6,14 +6,15 @@
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
     "test:integration": "mocha 'test/integration/*.test.js' --exit",
-    "test:ui": "mocha 'test/ui/*.test.js'"
-  },  
+    "test:ui": "mocha 'test/ui-selenium/*.test.js'" 
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "selenium-webdriver": "^4.15.0"
   },
   "devDependencies": {
     "chai": "^4.3.10",
