@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                         sh 'npm install'
+                        sh 'npm install puppeteer --save-dev'
                         sh 'npm run test:ui'
                 }
             }
