@@ -32,18 +32,20 @@ pipeline {
         stage('Integration Tests') {
             steps {
                 script {
-                    sh 'npm install'
-                    sh 'npm run test:integration'
+                    dockerImage.inside {
+                        sh 'npm install'
+                        sh 'npm run test:integration'
+                    }
                 }
             }
         }
 
         stage('UI Tests') {
             steps {
-                script {
-                    sh 'npm install'
-                    sh 'npm run test:ui'
-                }
+                    dockerImage.inside {
+                        sh 'npm install'
+                        sh 'npm run test:ui'
+                    }
             }
         }
 
