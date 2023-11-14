@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     // Building the Docker image
-                    sh 'docker build -t simple-node-login .'
+                    sh 'docker build -t simple-node-login -f node.Dockerfile .'
                     
                     // Checking if the container is already running
                     def isRunning = sh(script: "docker ps -q -f name=\\^app\\ \$", returnStdout: true).trim()
