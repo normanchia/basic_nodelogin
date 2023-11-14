@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
     "test:integration": "mocha 'test/integration/*.test.js' --exit",
-    "test:ui": "mocha 'test/ui/*.test.js'" 
+    "test:ui": "mocha 'test/ui/*.test.js' --exit" 
   },
   "author": "",
   "license": "ISC",
