@@ -32,20 +32,20 @@ pipeline {
         stage('Integration Tests') {
             steps {
                 script {
-                    dockerImage.inside {
-                        sh 'npm install'
-                        sh 'npm run test:integration'
-                    }
+                    // Using the Docker image for integration tests
+                    sh(script: "docker run simple-node-login npm install", returnStdout: true).trim()
+                    sh(script: "docker run simple-node-login npm run test:integration", returnStdout: true).trim()
                 }
             }
         }
 
         stage('UI Tests') {
             steps {
-                    dockerImage.inside {
-                        sh 'npm install'
-                        sh 'npm run test:ui'
-                    }
+                script {
+                    // Using the Docker image for UI tests
+                    sh(script: "docker run simple-node-login npm install", returnStdout: true).trim()
+                    sh(script: "docker run simple-node-login npm run test:ui", returnStdout: true).trim()
+                }
             }
         }
 
