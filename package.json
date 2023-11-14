@@ -5,7 +5,7 @@
   "main": "login.js",
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
-    "test:integration": "mocha 'test/integration/*.test.js'",
+    "test:integration": "mocha 'test/integration/*.test.js' --exit",
     "test:ui": "mocha 'test/ui/*.test.js'"
   },  
   "author": "",
