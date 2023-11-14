@@ -14,14 +14,14 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                // Build your Docker image
-                script {
-                    dockerImage = docker.build('my-nodejs-app:${env.BUILD_ID}')
-                }
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         // Build your Docker image
+        //         script {
+        //             dockerImage = docker.build('my-nodejs-app:${env.BUILD_ID}')
+        //         }
+        //     }
+        // }
 
         stage('Integration Tests') {
             steps {
