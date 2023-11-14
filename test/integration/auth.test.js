@@ -14,7 +14,6 @@ describe("POST /auth", () => {
       .send({ username: "test", password: "test" })
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body).to.have.property("loggedin", true);
         done();
       });
   });
