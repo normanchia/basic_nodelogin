@@ -7,7 +7,7 @@ describe("Login Form", () => {
 
     try {
       // Navigate to the application's URL
-      await driver.get("http://localhost:3000");
+      await driver.get("http://simple-node-login:3000");
 
       // Enter username and password
       await driver.findElement(By.name("username")).sendKeys("testUser");
